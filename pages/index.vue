@@ -15,9 +15,7 @@
     </div>
     <div>
       <h2>連絡先リスト</h2>
-      <div v-for="item in contactLists" :key="item.id">
-        <Message :item="item" />
-      </div>
+      <Message />
     </div>
   </div>
 </template>
@@ -44,6 +42,7 @@ export default {
         email: this.newEmail,
       };
       await this.$axios.post("http://127.0.0.1:8000/api/contact/", sendData);
+      this.contactLists = [];
     },
   },
   created() {

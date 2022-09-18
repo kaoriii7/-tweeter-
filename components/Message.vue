@@ -8,7 +8,7 @@
         <th>UPLOAD</th>
         <th>DELETE</th>
       </tr>
-      <tr>
+      <tr v-for="item in contactLists" :key="item.id">
         <td>{{ item.id }}</td>
         <td><input type="text" v-model="item.name" /></td>
         <td><input type="email" v-model="item.email" /></td>
@@ -27,9 +27,6 @@
 
 <script>
 export default {
-  props: {
-    item: Object,
-  },
   data() {
     return {
       newName: "",
@@ -60,7 +57,9 @@ export default {
       this.getContact();
     },
   },
-
+  created() {
+    this.getContact();
+  },
 }
 </script>
 
